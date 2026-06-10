@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>BODYGATE 리브랜딩 프로젝트</title>
+  <meta property="og:title" content="BODYGATE 리브랜딩 프로젝트"/>
+  <meta property="og:description" content="Pacemaker Corp — 바디게이트 리브랜딩 프로젝트"/>
+  <meta property="og:image" content="https://fowarp.github.io/bodygate-ref/og_image.png"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://fowarp.github.io/bodygate-ref/"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="BODYGATE 리브랜딩 프로젝트"/>
+  <meta name="twitter:image" content="https://fowarp.github.io/bodygate-ref/og_image.png"/>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface-gray: #F7F7F5;
+    --border: #E0E0DE;
+    --border-dark: #C9C9C7;
+    --text: #0F0F0F;
+    --muted: #838382;
+    --muted-light: #B1B1B0;
+    --coral: #FF5E3B;
+    --coral-light: #FFBFB1;
+    --coral-pale: #FFEFEC;
+    --navy: #112750;
+    --navy-mid: #415273;
+    --navy-light: #CFD4DC;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .header {
+    padding: 56px 72px 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .header-left .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .logo-wrap { display: inline-block; margin-bottom: 20px; }
+  .logo-wrap img { height: 32px; display: block; }
+  .header-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .meta-item .k {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .meta-item .v { font-size: 13px; color: var(--text); }
+  .header-right { text-align: right; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+
+  .tab-nav {
+    display: flex;
+    padding: 0 72px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .tab-btn {
+    padding: 18px 0;
+    margin-right: 40px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active-before { color: var(--text); border-bottom-color: var(--text); }
+  .tab-btn.active-after { color: var(--coral); border-bottom-color: var(--coral); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .content { padding: 0 72px 80px; }
+
+  .section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+    width: 120px;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+
+  .card { background: var(--surface-gray); border-radius: 4px; padding: 24px; }
+  .card-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .card-value { font-size: 13px; color: var(--text); line-height: 1.7; }
+
+  .slogan-block { padding: 40px; background: var(--surface-gray); border-radius: 4px; }
+  .slogan-ko {
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .slogan-en { font-size: 14px; color: var(--muted); letter-spacing: 0.05em; font-style: italic; }
+  .slogan-sub {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-dark);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    border: 1px solid var(--border-dark);
+    color: var(--muted);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  .color-chip { border-radius: 4px; overflow: hidden; }
+  .color-swatch { height: 80px; border: 1px solid rgba(0,0,0,0.06); }
+  .color-info { padding: 10px 12px; background: var(--surface-gray); }
+  .color-name { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .color-hex { font-size: 11px; color: var(--muted); font-family: 'SF Mono', 'Consolas', monospace; }
+
+  .frame-row { display: flex; align-items: center; }
+  .frame-step {
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+  .frame-arrow-box {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    color: var(--muted-light);
+    font-size: 16px;
+  }
+
+  .logo-version-wrap {
+    background: var(--surface-gray);
+    border-radius: 4px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .logo-version-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    align-self: flex-start;
+  }
+  .logo-version-img { max-height: 28px; }
+
+  .pkg-element-list { list-style: none; }
+  .pkg-element-list li {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pkg-element-list li:last-child { border-bottom: none; }
+  .pkg-element-list li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--muted-light);
+    flex-shrink: 0;
+  }
+
+  /* 패키지 이미지 */
+  .pkg-img-wrap {
+    background: var(--surface-gray);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .pkg-img-wrap img {
+    width: 100%;
+    display: block;
+  }
+  .pkg-img-label {
+    padding: 10px 14px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border-dark);
+    background: var(--surface-gray);
+  }
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .pill-new { background: #fff3ef; color: var(--coral); border: 1px solid var(--coral-light); }
+  .pill-plan { background: var(--surface-gray); color: var(--muted); border: 1px solid var(--border-dark); }
+  .pill-review { background: #eef1f6; color: var(--navy-mid); border: 1px solid var(--navy-light); }
+
+  .file-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .file-row:last-child { border-bottom: none; }
+  .file-icon { font-size: 16px; width: 28px; text-align: center; flex-shrink: 0; color: var(--muted); }
+  .file-info { flex: 1; min-width: 0; }
+  .dl-btn { margin-left:auto; flex-shrink:0; font-size:10px; font-weight:600; letter-spacing:0.05em; padding:5px 12px; border:1px solid var(--border-dark); color:var(--muted); border-radius:2px; text-decoration:none; white-space:nowrap; cursor:pointer; background:var(--bg); }
+  .dl-btn:hover { border-color:var(--coral); color:var(--coral); }
+  .file-name { font-size: 13px; font-weight: 500; color: var(--text); }
+  .file-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .file-badge {
+    margin-left: auto;
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .badge-ok { background: #eefaee; color: #3a8a3a; border: 1px solid #c0e0c0; }
+  .badge-manual { background: #fffbec; color: #a07800; border: 1px solid #e8d88a; }
+
+  .graphic-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); }
+  .graphic-item { background: var(--surface-gray); padding: 16px; font-size: 11px; }
+  .graphic-num { color: var(--muted-light); font-size: 10px; margin-bottom: 6px; }
+  .graphic-name { font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .graphic-desc { color: var(--muted); font-size: 11px; line-height: 1.5; }
+
+  .pos-row {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pos-row:last-child { border-bottom: none; }
+  .pos-key { font-size: 11px; font-weight: 600; color: var(--text); width: 140px; flex-shrink: 0; padding-top: 1px; }
+  .pos-val { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  .footer {
+    padding: 24px 72px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+  /* Calendar */
+  .cal-wrap { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .cal-title { font-size:12px; font-weight:600; color:var(--text); margin-bottom:8px; }
+  .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); border:1px solid var(--border); border-radius:4px; overflow:hidden; }
+  .cal-grid > *:nth-child(7n) { border-right:none; }
+  .cal-dh { padding:6px 4px; font-size:10px; text-transform:uppercase; color:var(--muted); text-align:center; background:var(--surface-gray); border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .cal-dh.sat { color:var(--coral); }
+  .cal-c { min-height:72px; padding:5px 7px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .cal-c.end-row { border-bottom:none; }
+  .cal-n { font-size:11px; display:flex; justify-content:flex-end; margin-bottom:3px; }
+  .cal-n span { color:var(--text); }
+  .cal-c.dim .cal-n span { color:var(--muted-light); }
+  .cal-c.today .cal-n span { background:var(--coral); color:#fff; border-radius:50%; width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; font-size:10px; }
+  .cal-ev { border-radius:2px; padding:3px 6px; font-size:10px; line-height:1.5; margin-top:2px; }
+  .cal-ev .et { font-weight:600; display:block; color:var(--text); font-size:10px; }
+  .cal-ev .ep { display:flex; gap:3px; margin-top:2px; flex-wrap:wrap; align-items:center; }
+  .ep-t { font-size:9px; padding:1px 5px; border-radius:2px; font-weight:600; }
+  .ep-cl { background:#EEFAEA; color:#2DAA57; }
+  .ep-bg { background:#EDF3FF; color:#2B7FFF; }
+  .ep-on { background:#FFEEED; color:#E0302A; }
+  .ep-pr { background:#F0F0EF; color:#838382; }
+  /* Calendar v2 — spanning bars */
+  .cal-outer { border:1px solid var(--border); border-radius:4px; overflow:hidden; }
+  .cal-row { display:grid; grid-template-columns:repeat(7,1fr); position:relative; border-bottom:1px solid var(--border); }
+  .cal-row.last-row { border-bottom:none; }
+  .cal-row .cal-c { border-bottom:none; min-height:76px; }
+  .cal-row .cal-c:nth-child(7) { border-right:none; }
+  .cal-ev-layer { position:absolute; top:26px; left:0; right:0; pointer-events:none; }
+  .cal-bar { position:absolute; height:20px; border-radius:2px; display:flex; align-items:center; padding:0 7px; font-size:10px; font-weight:600; white-space:nowrap; }
+  .cal-bar-g { background:#EFEFEE; color:#9A9A98; }
+  .cal-bar-c { background:#fff3ef; color:#FF5E3B; }
+  /* R1~R5 task colors */
+  .cal-bar-r1 { background:#fff3ef; color:#FF5E3B; }
+  .cal-bar-r2 { background:#eff6ff; color:#2563EB; }
+  .cal-bar-r3 { background:#f5f3ff; color:#7C3AED; }
+  .cal-bar-r4 { background:#ecfdf5; color:#059669; }
+  .cal-bar-r5 { background:#fffbeb; color:#D97706; }
+  .rb { display:inline-block; font-size:9px; font-weight:700; padding:2px 7px; border-radius:2px; margin-right:7px; letter-spacing:0.04em; }
+  .rb.r1 { background:#fff3ef; color:#FF5E3B; }
+  .rb.r2 { background:#eff6ff; color:#2563EB; }
+  .rb.r3 { background:#f5f3ff; color:#7C3AED; }
+  .rb.r4 { background:#ecfdf5; color:#059669; }
+  .rb.r5 { background:#fffbeb; color:#D97706; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="eyebrow">REBRANDING PROJECT</div>
+    <div class="logo-wrap">
+      <img src="NEW_BODYGATE_LOGO_B.png" alt="BODY GATE">
+    </div>
+    <div class="header-meta">
+      <div class="meta-item"><div class="k">도메인</div><div class="v"><a href="https://bodygate.kr" target="_blank" style="color:inherit; text-decoration:none; border-bottom:1px solid var(--border-dark);">bodygate.kr</a></div></div>
+      <div class="meta-item"><div class="k">타겟</div><div class="v">20~40대 여성</div></div>
+      <div class="meta-item"><div class="k">가이드라인</div><div class="v">v1.0 (2026.01)</div></div>
+      <div class="meta-item"><div class="k">런칭일</div><div class="v">2026 Q3</div></div>
+    </div>
+  </div>
+  <div class="header-right">Nuri</div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active-before" onclick="switchTab('before')" id="tab-before">기존 브랜드</button>
+  <button class="tab-btn" onclick="switchTab('after')" id="tab-after">리브랜딩</button>
+</div>
+
+<!-- ==================== BEFORE ==================== -->
+<div class="tab-panel active" id="panel-before">
+<div class="content">
+
+  <!-- 브랜드 포지션 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Brand Position</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="slogan-block">
+          <div class="slogan-ko" style="font-size:20px;">Smart Defense, Every Day</div>
+          <div class="slogan-en">몸의 밸런스를 리셋하는 항염 시너지 케어 브랜드</div>
+          <div class="slogan-sub">
+            <span class="tag">면역·항염 포커스</span>
+            <span class="tag">From inflammation to balance.</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2" style="gap:12px; align-content:start;">
+        <div class="card">
+          <div class="card-label">카테고리</div>
+          <div class="card-value">면역 브랜드<br>항염 시너지 케어</div>
+        </div>
+        <div class="card">
+          <div class="card-label">채널</div>
+          <div class="card-value">네이버 스마트스토어</div>
+        </div>
+        <div class="card">
+          <div class="card-label">핵심 메시지</div>
+          <div class="card-value" style="font-size:12px;">염증 → 불균형 → 정화<br>→ 순환 → 밸런스</div>
+        </div>
+        <div class="card" style="background:#1A7A5E;">
+          <div class="card-label" style="color:rgba(255,255,255,0.6);">이슈사항</div>
+          <div class="card-value" style="color:#fff; font-size:12px;">20~40대 여성의 니즈 카테고리 변경 (리추얼)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 기존 브랜드 아이덴티티 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Brand Identity</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Logo — "Bodygate" (붙여쓰기 / 굵은 산세리프)</div>
+        <div style="background:var(--surface-gray); border-radius:4px; overflow:hidden;">
+          <div style="height:252px; display:flex; align-items:center; justify-content:center; padding:24px;">
+            <img src="OLD_BODYGATE_LOGO_B.png" alt="기존 로고" style="max-width:60%; max-height:60%; object-fit:contain; display:block;">
+          </div>
+          <div class="pkg-img-label">패키지 및 웹사이트 적용 로고 — Bodygate (붙여쓰기)</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Symbol — Protect Symbol (방패 + 아치형 Door)</div>
+        <div style="background:var(--surface-gray); border-radius:4px; overflow:hidden;">
+          <div style="height:252px; display:flex; align-items:center; justify-content:center; padding:24px;">
+            <img src="OLD_BODYGATE_SYMBOL.png" alt="기존 심볼" style="max-width:60%; max-height:60%; object-fit:contain; display:block;">
+          </div>
+          <div class="pkg-img-label">기존 브랜드 심볼 — Shield (방어막) + 아치형 Door 모티프</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 기존 패키지 디자인 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Package Design</span>
+    </div>
+
+    <!-- 심볼 / Design Concept -->
+    <div style="margin-bottom:32px;">
+      <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Design Concept — PRTZL STUDIO, 2024.11.14</div>
+      <div class="grid-2">
+        <div class="pkg-img-wrap">
+          <img src="pkg_images/pkg-2.png" alt="Design Concept">
+          <div class="pkg-img-label">Protect Symbol + 아치형 Door</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">구성 요소</div>
+          <ul class="pkg-element-list">
+            <li>Protect symbol — 방어막·쉴드 아이콘</li>
+            <li>아치형 Door 그래픽 (보호막 모티프)</li>
+            <li>Smart Defense / Smart Defense for Everyday Health</li>
+            <li>브랜드명 "Bodygate" 굵게</li>
+            <li>성분명 리스트 (Quercetin / Bromelain / Vitamin C)</li>
+            <li>수량 박스: 40 TABLES</li>
+          </ul>
+          <div class="card" style="background:#fff8f0; margin-top:4px;">
+            <div class="card-label" style="color:#a07000;">피드백 (채택 방향)</div>
+            <div class="card-value" style="font-size:12px;">
+              1차안 방어막 심볼 유지 · 실버 포인트 활용<br>
+              제품명 <strong>Quermelain</strong> 비중 최대 · 서브텍스트 얇게<br>
+              레퍼런스: VICKS (볼드+실버+숫자)<br>
+              <span style="color:var(--muted-light); font-size:11px;">→ 리브랜딩 후 전면 재검토 예정</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 기존 제품 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Product</span>
+    </div>
+    <table>
+      <tr>
+        <th>제품명</th>
+        <th>포지션</th>
+        <th>성분</th>
+      </tr>
+      <tr>
+        <td><strong>퀘르파인 (Quermelain)</strong><br><span style="font-size:11px;color:var(--muted);">퀘르멜라인 캡슐 포뮬러</span></td>
+        <td>면역·항염 / 체중관리</td>
+        <td style="font-size:12px;color:var(--muted);">이트레스(DNF-10) · 퀘르세틴 500mg<br>브로멜라인 100mg · 리포좀 비타민C 55mg<br>비피더스 애니멀리스 · 푸룬 · 치커리식이섬유</td>
+      </tr>
+      <tr>
+        <td><strong>공복엔 올레샷</strong><br><span style="font-size:11px;color:var(--muted);">올리브유+레몬즙 / 일반식품</span></td>
+        <td>공복 루틴 / 소화·피부·심혈관</td>
+        <td style="font-size:12px;color:var(--muted);">유기농 엑스트라버진 올리브유 64.5%<br>유기농 레몬즙 NFC 34.5%<br>리포좀 L-글루타치온 1%</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 상세페이지 분석 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Detail Page</span>
+    </div>
+    <div style="display:grid; gap:8px;">
+      <div style="display:flex; gap:10px; align-items:flex-start; padding:12px 14px; background:var(--surface-gray); border-radius:4px; border-left:3px solid var(--muted);">
+        <span style="font-size:10px; color:var(--muted); flex-shrink:0; margin-top:1px;">01</span>
+        <div style="font-size:12px; line-height:1.6; color:var(--text);">퀘르세틴 효능 USP 설득 부족 — 핵심 성분임에도 소비자가 체감할 수 있는 효능 서사 전달이 미흡</div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:flex-start; padding:12px 14px; background:var(--surface-gray); border-radius:4px; border-left:3px solid var(--muted);">
+        <span style="font-size:10px; color:var(--muted); flex-shrink:0; margin-top:1px;">02</span>
+        <div style="font-size:12px; line-height:1.6; color:var(--text);">'이런 분들께 추천드립니다' 페인 포인트 모호 — 타겟 증상·상황이 구체적으로 특정되지 않아 공감 유도 미흡</div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:flex-start; padding:12px 14px; background:var(--surface-gray); border-radius:4px; border-left:3px solid var(--muted);">
+        <span style="font-size:10px; color:var(--muted); flex-shrink:0; margin-top:1px;">03</span>
+        <div style="font-size:12px; line-height:1.6; color:var(--text);">잇리스 리브랜딩 후에도 잇리스 본질 USP 설득 부족 — 네이밍 변경에 그쳤고 '어째서 잇리스인가'에 대한 근거 기반 설득 미흡</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 에셋 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Assets</span>
+    </div>
+
+    <div class="file-row">
+      <div class="file-icon">AI</div>
+      <div class="file-info">
+        <div class="file-name">BODYGATE_LOGO_(최).ai</div>
+        <div class="file-desc">로고 벡터 원본 (Adobe Illustrator)</div>
+      </div>
+      <a href="BODYGATE_LOGO_(최).ai.ps" download="BODYGATE_LOGO_(최).ai" class="dl-btn">↓ 다운로드</a>
+    </div>
+    <div class="file-row">
+      <div class="file-icon">PNG</div>
+      <div class="file-info">
+        <div class="file-name">NEW_BODYGATE_LOGO_B.png</div>
+        <div class="file-desc">로고 흑백 버전 (1934×274px)</div>
+      </div>
+      <a href="NEW_BODYGATE_LOGO_B.png" download class="dl-btn">↓ 다운로드</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ==================== 리브랜딩 ==================== -->
+<div class="tab-panel" id="panel-after">
+<div class="content">
+
+  <!-- 브랜드 가이드라인 다운로드 -->
+  <div class="section" style="padding:32px 0;">
+    <div class="section-header" style="margin-bottom:16px;">
+      <span class="section-label">Brand Guideline</span>
+    </div>
+    <a href="https://app.notion.com/p/2f58a101a5fd80cfa97ddf4b013029ea" target="_blank" style="text-decoration:none;">
+      <div style="display:flex; align-items:center; gap:16px; padding:20px 24px; background:var(--surface-gray); border-radius:4px; border:1px solid var(--border); cursor:pointer; transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--coral)'" onmouseout="this.style.borderColor='var(--border)'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" width="20" height="20" style="flex-shrink:0; border-radius:3px;" alt="Notion">
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:4px;">BODYGATE_Guideline_v1.0.pdf</div>
+          <div style="font-size:11px; color:var(--muted);">Notion에서 열기 — 컬러, 로고, 타이포그래피, 그래픽 시스템 전체 수록 / 2026.01</div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- 변경 필요 항목 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label" style="white-space:nowrap;">Rebrand Checklist</span>
+    </div>
+    <table>
+      <tr>
+        <th style="width:140px;">항목</th>
+        <th>기존</th>
+        <th>변경 방향</th>
+        <th style="width:72px;">현황</th>
+      </tr>
+      <tr>
+        <td style="font-weight:600; white-space:nowrap;">로고 심볼</td>
+        <td style="color:var(--muted); font-size:11px; white-space:nowrap;"><img src="OLD_BODYGATE_SYMBOL.png" alt="구 심볼" style="max-height:32px; display:block; margin-bottom:4px;">Shield 아이콘 — 패키지 전면 사용</td>
+        <td style="font-size:11px; white-space:nowrap;">없음</td>
+        <td><span style="display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:#eef1f6;color:#415273;white-space:nowrap;">미완료</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; white-space:nowrap;">로고 타입</td>
+        <td style="color:var(--muted); font-size:11px; white-space:nowrap;"><img src="OLD_BODYGATE_LOGO_B.png" alt="OLD" style="max-height:20px; display:block; margin-bottom:4px;">"Bodygate" / 굵은 고딕</td>
+        <td style="font-size:11px; white-space:nowrap;"><img src="NEW_BODYGATE_LOGO_B.png" alt="NEW" style="max-height:20px; display:block; margin-bottom:4px;">BODY GATE / Alido Regular</td>
+        <td><span style="display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:#112750;color:#fff;white-space:nowrap;">완료</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; white-space:nowrap;">슬로건</td>
+        <td style="color:var(--muted); font-size:11px; white-space:nowrap;">"Smart Defense, Every Day"</td>
+        <td style="font-size:11px; white-space:nowrap;">"비우고 조율하며, 나의 리듬으로." — Reset. Rebalance. Find your rhythm.</td>
+        <td><span style="display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:#112750;color:#fff;white-space:nowrap;">완료</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; white-space:nowrap;">브랜드 컬러</td>
+        <td style="color:var(--muted); font-size:11px; white-space:nowrap;">
+          진초록(#1A7A5E) <span style="display:inline-block;width:9px;height:9px;background:#1A7A5E;border-radius:2px;vertical-align:middle;"></span> /
+          네이비 블루 <span style="display:inline-block;width:9px;height:9px;background:#1B3A6B;border-radius:2px;vertical-align:middle;"></span>
+        </td>
+        <td style="font-size:11px; white-space:nowrap;">
+          White(#FFFFFF) <span style="display:inline-block;width:9px;height:9px;background:#FFFFFF;border:1px solid #E0E0DE;border-radius:2px;vertical-align:middle;"></span> /
+          Light Gray(#F7F7F5) <span style="display:inline-block;width:9px;height:9px;background:#F7F7F5;border:1px solid #E0E0DE;border-radius:2px;vertical-align:middle;"></span> /
+          Coral Red(#FF5E3B) <span style="display:inline-block;width:9px;height:9px;background:#FF5E3B;border-radius:2px;vertical-align:middle;"></span> /
+          Oxford Blue(#112750) <span style="display:inline-block;width:9px;height:9px;background:#112750;border-radius:2px;vertical-align:middle;"></span>
+        </td>
+        <td><span style="display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:#112750;color:#fff;white-space:nowrap;">완료</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; white-space:nowrap;">패키지 디자인</td>
+        <td style="color:var(--muted); font-size:11px; line-height:1.8;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
+            <div>
+              <div style="background:var(--surface-gray); border-radius:3px; overflow:hidden; margin-bottom:6px;">
+                <img src="pkg_querpine.jpg" alt="퀘르파인 패키지" style="width:100%; display:block;">
+              </div>
+              <strong style="color:var(--text); font-size:10px; letter-spacing:0.05em; display:block; margin-bottom:3px;">퀘르파인</strong>
+              짙은 청록 단색 배경 / Shield 심볼 + 아치형 Door / "Querpine Eatless" 볼드 영문 / Gold seal 배지 3종
+            </div>
+            <div>
+              <div style="background:#fff; border-radius:3px; overflow:hidden; margin-bottom:6px;">
+                <img src="pkg_oleshot.jpg" alt="올레샷 패키지" style="width:100%; display:block;">
+              </div>
+              <strong style="color:var(--text); font-size:10px; letter-spacing:0.05em; display:block; margin-bottom:3px;">올레샷</strong>
+              라임-옐로우 배경 / 레몬·올리브 식재료 사진 / "공복엔 올레샷" 대형 한글 + OllE SHOT / Green seal 배지 3종
+            </div>
+          </div>
+          <span style="color:var(--muted-light);">→ 두 제품 각각 다른 비주얼 시스템</span>
+        </td>
+        <td style="font-size:11px;">2종 패키지를 하나의 브랜드 시스템으로 통합 (브랜드 비주얼 언어 일관화)</td>
+        <td><span style="display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:#fff3ef;color:#FF5E3B;border:1px solid #FFBFB1;white-space:nowrap;">필요</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; white-space:nowrap;">패키지 타이포</td>
+        <td style="color:var(--muted); font-size:11px; white-space:nowrap;">굵은 산세리프 고딕</td>
+        <td style="font-size:11px; white-space:nowrap;">EN: Creato Display / KR·본문: Noto Sans KR</td>
+        <td><span style="display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:#112750;color:#fff;white-space:nowrap;">완료</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; white-space:nowrap;">카테고리 키워드</td>
+        <td style="color:var(--muted); font-size:11px; white-space:nowrap;">면역 / 항염 / Smart Defense</td>
+        <td style="font-size:11px; white-space:nowrap;">웰니스 루틴 / 체계적인, 조화로운, 본질적인 / 근거 기반</td>
+        <td><span style="display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:#112750;color:#fff;white-space:nowrap;">완료</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; white-space:nowrap;">웹사이트 디자인</td>
+        <td style="color:var(--muted); font-size:11px; white-space:nowrap;">기존 Wix 운영 (bodygate.kr)</td>
+        <td style="font-size:11px; white-space:nowrap;">리브랜딩 완료 후 신규 디자인·개발 필요</td>
+        <td><span style="display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:#fff3ef;color:#FF5E3B;border:1px solid #FFBFB1;white-space:nowrap;">필요</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; white-space:nowrap;">제품 서브카피</td>
+        <td style="color:var(--muted); font-size:11px; white-space:nowrap;">"Smart Defense for Everyday Health"</td>
+        <td style="font-size:11px; white-space:nowrap;">슬로건과 병합 필요</td>
+        <td><span style="display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;background:#eef1f6;color:#415273;white-space:nowrap;">미완료</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 방향 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Brand Position</span>
+    </div>
+    <div class="grid-2">
+      <div class="slogan-block">
+        <div class="slogan-ko">비우고 조율하며,<br>나의 리듬으로.</div>
+        <div class="slogan-en">Reset. Rebalance. Find your rhythm. Bodygate.</div>
+        <div class="slogan-sub">
+          <span class="tag">근거 기반. Everyday.</span>
+          <span class="tag">과학으로 설계한 웰니스 루틴</span>
+        </div>
+      </div>
+      <div>
+        <div class="frame-row" style="margin-bottom:20px;">
+          <div class="frame-step" style="background:var(--surface-gray); border-radius:4px; flex:1; color:var(--text);">RESET<br><span style="font-weight:400;font-size:10px;color:var(--muted);">비우기</span></div>
+          <div class="frame-arrow-box">→</div>
+          <div class="frame-step" style="background:var(--surface-gray); border-radius:4px; flex:1; color:var(--text);">REBALANCE<br><span style="font-weight:400;font-size:10px;color:var(--muted);">조율하기</span></div>
+          <div class="frame-arrow-box">→</div>
+          <div class="frame-step" style="background:var(--surface-gray); border-radius:4px; flex:1; color:var(--text);">RHYTHM<br><span style="font-weight:400;font-size:10px;color:var(--muted);">나의 루틴</span></div>
+        </div>
+        <div class="grid-3" style="gap:8px;">
+          <div class="card">
+            <div class="card-label">채널 목표</div>
+            <div class="card-value" style="font-size:12px;">올리브영<br>올리브배럴</div>
+          </div>
+          <div class="card">
+            <div class="card-label">카테고리 확장</div>
+            <div class="card-value" style="font-size:12px;">다이어트 · 여성<br>수면 · 이너뷰티</div>
+          </div>
+          <div class="card">
+            <div class="card-label">시장 규모</div>
+            <div class="card-value" style="font-size:12px;">이너뷰티 2025<br>약 2조원</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 시장 데이터 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Market Data</span>
+    </div>
+    <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">웰니스 루틴 vs 항염 — 20~40대 여성 타겟 니즈 비교</div>
+
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-label">항염 포지션 — 타겟 부합도 낮음</div>
+        <div style="font-size:12px; color:var(--text); line-height:2;">
+          퀘르세틴 등 항염 성분 수요 자체는 존재하나,<br>
+          <strong>"항염 브랜드" 이미지 = 기능식품·의약품 퍼셉션</strong><br>
+          → 20~30대 여성 구매 동기와 거리 있음<br><br>
+          코로나 이후 면역·항염 관심 급증 →<br>
+          <strong>2022년부터 성장세 둔화</strong><br><br>
+          "항염 카테고리 포화" 직접 데이터는 없음<br>
+          (검증되지 않은 판단으로 삭제 처리)
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">웰니스 루틴 — 타겟 부합도 높음</div>
+        <div style="font-size:12px; color:var(--text); line-height:2;">
+          20~40대 정기 구독 비율<br>
+          <strong>2023년 18% → 2025년 27%</strong> (오픈서베이)<br><br>
+          피부건강 건기식 품목신고 건수<br>
+          <strong>23% 증가</strong> ('22Q2~'24Q1)<br><br>
+          이너뷰티 시장 규모<br>
+          <strong>국내 약 2조원</strong><br><br>
+          20~30대 여성 상위 니즈: 피부·이너뷰티, 체지방·체형, 수면·스트레스<br>
+          "예방·루틴" 중심 구매 동기 강세
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:14px 16px; background:var(--surface-gray); border-radius:4px; font-size:12px; color:var(--muted); line-height:1.8;">
+      <strong style="color:var(--text);">결론</strong> — 웰니스 루틴 카테고리가 타겟 연령대에서 더 강한 구매 동기와 연결된다는 건 데이터로 지지됨.<br>
+      출처: ListeningMind 2025 건기식 시장 리포트 / 오픈서베이 건기식 트렌드 리포트 2025 / 식품음료신문 2025 건기식 트렌드
+    </div>
+  </div>
+
+
+  <!-- 포지셔닝 맵 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label" style="white-space:nowrap;">POSITIONING MAP</span><span style="font-size:10px; color:var(--muted); font-weight:400; letter-spacing:0; margin-left:10px; text-transform:none;">(드래그하여 AS-IS / TO-BE 포지션 변경 가능)</span>
+    </div>
+    <div style="display:grid; grid-template-columns:676px 1fr; gap:32px; align-items:start;">
+
+      <!-- SVG 차트 (이름 레이블만) -->
+      <div style="position:sticky; top:64px;">
+        <div style="position:absolute; top:0; right:0; z-index:10; display:flex; flex-direction:column; gap:4px;">
+          <button onclick="resetPositions()" style="font-size:10px; padding:4px 10px; border:1px solid var(--border-dark); background:var(--bg); color:var(--muted); border-radius:2px; cursor:pointer; letter-spacing:0.05em; font-family:inherit;" onmouseover="this.style.borderColor='var(--coral)';this.style.color='var(--coral)'" onmouseout="this.style.borderColor='var(--border-dark)';this.style.color='var(--muted)'">초기화</button>
+          <button id="apply-btn" onclick="applyPositions()" style="font-size:10px; padding:4px 10px; border:1px solid var(--border-dark); background:var(--bg); color:var(--muted); border-radius:2px; cursor:pointer; letter-spacing:0.05em; font-family:inherit;" onmouseover="this.style.borderColor='#1A7A5E';this.style.color='#1A7A5E'" onmouseout="this.style.borderColor='var(--border-dark)';this.style.color='var(--muted)'">적용</button>
+        </div>
+        <svg id="pos-map-svg" viewBox="0 0 680 540" style="width:100%; display:block; font-family:'Helvetica Neue',Arial,'Apple SD Gothic Neo',sans-serif;">
+        <defs>
+          <style>
+            .dash-arrow { stroke-dasharray:6 4; animation:flowDash 1s linear infinite; }
+            @keyframes flowDash { to { stroke-dashoffset:-10; } }
+            .tobe-ripple { fill:none; stroke:#FF5E3B; }
+            @keyframes tobeRipple {
+              0%   { r:11px; opacity:0.55; stroke-width:1.5px; }
+              100% { r:22px; opacity:0;    stroke-width:0.5px; }
+            }
+          </style>
+          <linearGradient id="arrowGrad" x1="195" y1="297" x2="237" y2="166" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1A7A5E"/>
+            <stop offset="100%" stop-color="#FF5E3B"/>
+          </linearGradient>
+          <marker id="arrtip" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,1.5 L6.5,4 L0,6.5" fill="none" stroke="#FF5E3B" stroke-width="1.3"/>
+          </marker>
+        </defs>
+        <!-- 사분면 배경 -->
+        <rect x="120" y="80" width="200" height="190" fill="#fff3ef" rx="2" opacity="0.45"/>
+        <rect x="320" y="80" width="200" height="190" fill="#F7F7F5" rx="2"/>
+        <rect x="120" y="270" width="200" height="190" fill="#F7F7F5" rx="2"/>
+        <rect x="320" y="270" width="200" height="190" fill="#F7F7F5" rx="2"/>
+        <!-- 축 -->
+        <line x1="108" y1="270" x2="528" y2="270" stroke="#C9C9C7" stroke-width="1"/>
+        <line x1="320" y1="68" x2="320" y2="472" stroke="#C9C9C7" stroke-width="1"/>
+        <polygon points="108,265 96,270 108,275" fill="#C9C9C7"/>
+        <polygon points="528,265 540,270 528,275" fill="#C9C9C7"/>
+        <polygon points="315,70 320,58 325,70" fill="#C9C9C7"/>
+        <polygon points="315,470 320,482 325,470" fill="#C9C9C7"/>
+        <!-- 축 레이블 -->
+        <text x="93" y="274" font-size="11" fill="#838382" text-anchor="end">기능/치료 중심</text>
+        <text x="544" y="274" font-size="11" fill="#838382" text-anchor="start">웰니스 루틴 중심</text>
+        <text x="320" y="52" font-size="11" fill="#838382" text-anchor="middle">프리미엄</text>
+        <text x="320" y="498" font-size="11" fill="#838382" text-anchor="middle">대중적</text>
+        <!-- 사분면 레이블 -->
+        <text x="220" y="104" font-size="9" fill="#FFBFB1" text-anchor="middle">전문 기능성</text>
+        <text x="420" y="104" font-size="9" fill="#CACAC8" text-anchor="middle">프리미엄 웰니스</text>
+        <text x="220" y="452" font-size="9" fill="#CACAC8" text-anchor="middle">일반 건기식</text>
+        <text x="420" y="452" font-size="9" fill="#CACAC8" text-anchor="middle">대중 웰니스</text>
+        <!-- 애니메이션 화살표 -->
+        <line class="dash-arrow" x1="195" y1="297" x2="237" y2="166" stroke="url(#arrowGrad)" stroke-width="1.8" marker-end="url(#arrtip)"/>
+        <!-- 레퍼런스 브랜드 — 전문 기능성 (브랜드력 있음 ● / 없음 ○) -->
+        <circle cx="172" cy="128" r="7" fill="#8A8A88"/>
+        <text x="172" y="114" font-size="9.5" fill="#8A8A88" text-anchor="middle" font-weight="600">비피젠</text>
+        <circle cx="290" cy="225" r="7" fill="#C2C2C0"/>
+        <text x="290" y="211" font-size="9.5" fill="#AEAEAC" text-anchor="middle" font-weight="600">시드랩</text>
+        <!-- 레퍼런스 브랜드 — 프리미엄 웰니스 -->
+        <circle cx="462" cy="130" r="7" fill="#8A8A88"/>
+        <text x="462" y="148" font-size="9" fill="#8A8A88" text-anchor="middle" font-weight="600">이야이야앤프렌즈</text>
+        <circle cx="368" cy="225" r="7" fill="#C2C2C0"/>
+        <text x="368" y="211" font-size="9.5" fill="#AEAEAC" text-anchor="middle" font-weight="600">오니스트</text>
+        <!-- 레퍼런스 브랜드 — 일반 건기식 -->
+        <circle cx="382" cy="338" r="7" fill="#8A8A88"/>
+        <text x="382" y="324" font-size="9.5" fill="#8A8A88" text-anchor="middle" font-weight="600">푸드올로지</text>
+        <circle cx="180" cy="415" r="7" fill="#8A8A88"/>
+        <text x="180" y="398" font-size="8.5" fill="#8A8A88" text-anchor="middle" font-weight="600">종근당건강</text>
+        <!-- 레퍼런스 브랜드 — 대중 웰니스 -->
+        <circle cx="438" cy="318" r="7" fill="#C2C2C0"/>
+        <text x="438" y="304" font-size="9.5" fill="#AEAEAC" text-anchor="middle" font-weight="600">NE:AR</text>
+        <circle cx="235" cy="420" r="7" fill="#C2C2C0"/>
+        <text x="235" y="406" font-size="9.5" fill="#AEAEAC" text-anchor="middle" font-weight="600">푸응</text>
+        <!-- AS-IS -->
+        <circle id="asis-dot" cx="192" cy="308" r="9" fill="#1A7A5E" style="cursor:grab;"/>
+        <text id="asis-label" x="192" y="326" font-size="10.5" fill="#1A7A5E" text-anchor="middle" font-weight="600" style="pointer-events:none; user-select:none;">AS-IS</text>
+        <!-- TO-BE 파장 -->
+        <circle class="tobe-ripple" id="tobe-ripple1" cx="240" cy="155" style="animation:tobeRipple 2s ease-out 0s infinite;"/>
+        <circle class="tobe-ripple" id="tobe-ripple2" cx="240" cy="155" style="animation:tobeRipple 2s ease-out 0.75s infinite;"/>
+        <circle class="tobe-ripple" id="tobe-ripple3" cx="240" cy="155" style="animation:tobeRipple 2s ease-out 1.5s infinite;"/>
+        <!-- TO-BE -->
+        <circle id="tobe-dot" cx="240" cy="155" r="9" fill="#FF5E3B" style="cursor:grab;"/>
+        <text id="tobe-label" x="240" y="139" font-size="10.5" fill="#FF5E3B" text-anchor="middle" font-weight="600" style="pointer-events:none; user-select:none;">TO-BE</text>
+      </svg>
+      </div>
+
+      <!-- 오른쪽 설명 패널 -->
+      <div style="padding-top:8px;">
+        <!-- AS-IS -->
+        <div style="margin-bottom:16px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+            <div style="width:10px; height:10px; border-radius:50%; background:#1A7A5E; flex-shrink:0;"></div>
+            <span style="font-size:11px; font-weight:700; color:#1A7A5E; letter-spacing:0.03em;">AS-IS</span>
+          </div>
+          <p style="font-size:11px; color:var(--muted); margin-left:18px; line-height:1.7; margin-top:0; margin-bottom:0;">기능 및 치료 중심의 항염 시너지 케어 브랜드</p>
+        </div>
+        <!-- TO-BE -->
+        <div style="margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border);">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+            <div style="width:10px; height:10px; border-radius:50%; background:#FF5E3B; flex-shrink:0;"></div>
+            <span style="font-size:11px; font-weight:700; color:#FF5E3B; letter-spacing:0.03em;">TO-BE</span>
+          </div>
+          <p style="font-size:11px; color:var(--muted); margin-left:18px; line-height:1.7; margin-top:0; margin-bottom:0;">프리미엄 전문 기능성 브랜드 — 과학적 근거 기반의 성분 시너지 서사로 카테고리 전문가 포지션 구축</p>
+        </div>
+        <!-- 레퍼런스 브랜드 목록 -->
+        <div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+            <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Reference Brands</div>
+            <div style="font-size:10px; color:var(--muted);"><span style="color:#8A8A88; font-weight:700;">●</span> 브랜드력 있음 &nbsp;·&nbsp; <span style="color:#C2C2C0; font-weight:700;">●</span> 브랜드력 없음</div>
+          </div>
+
+          <!-- 전문 기능성 -->
+          <div style="margin-bottom:14px;">
+            <div style="font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#FF5E3B; background:#fff3ef; padding:4px 8px; border-radius:2px; display:inline-block; margin-bottom:8px;">전문 기능성</div>
+            <!-- 비피젠 -->
+            <div style="padding:10px 12px; background:var(--surface-gray); border-radius:3px; border-left:3px solid #8A8A88; margin-bottom:6px; cursor:pointer;" onclick="toggleCard(this)" data-open="false">
+              <div style="display:flex; align-items:center; justify-content:space-between; user-select:none;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="color:#8A8A88; font-size:10px;">●</span>
+                  <span style="font-size:12px; font-weight:700; color:var(--text);">비피젠</span>
+                  <span style="font-size:10px; color:var(--muted);">주식회사 이삼오구</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <a href="https://bifigen.com" target="_blank" onclick="event.stopPropagation();" style="display:flex; align-items:center; color:#AAB4FF; opacity:0.9; transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11.61 5.99l-4.98 4.98a3.25 3.25 0 0 1-4.60-4.60l4.98-4.98a2.17 2.17 0 0 1 3.07 3.07l-4.98 4.98a1.08 1.08 0 0 1-1.53-1.53l4.59-4.59" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <svg class="card-arrow" width="11" height="11" viewBox="0 0 11 11" style="flex-shrink:0; transition:transform 0.2s; color:var(--muted);">
+                    <path d="M1.5 3.5 L5.5 7.5 L9.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-detail" style="max-height:0; overflow:hidden; transition:max-height 0.25s ease;">
+                <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:grid; gap:4px;">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:6px;"><img src="https://bifigen.com/web/product/big/202304/8d0b195d90c215fb7aed537e28771060.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/><img src="https://bifigen.com/web/product/extra/small/202603/544939683c3829d80d8e1313a090ecce.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/></div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">1. 핵심 포지션</span><br><span style="font-size:10px;">30~50대 남녀</span> · 100% 비피더스균 단일 성분. 과학 기반 프리미엄 프로바이오틱스.</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">2. 매출 및 성장</span><br>약 1,294억 (2024) · 창립 4년 1,000%+ 성장 · 전년 대비 +89.7%</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">3. 히어로 제품</span><br>퓨어 비피더스 프리미엄 (59,000원 / 30캡슐) / 장 건강·면역</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">4. 입점 채널</span><br>자사몰, 카카오톡스토어, 11번가, 슈퍼워크</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">5. 의견</span><br>기능이 브랜드가 된 포지셔닝 레퍼런스 — 단일 균종 특화 vs 바디게이트 복합 시너지로 차별화.</div>
+                </div>
+              </div>
+            </div>
+            <!-- 시드랩 -->
+            <div style="padding:10px 12px; background:var(--surface-gray); border-radius:3px; border-left:3px solid #C2C2C0; cursor:pointer;" onclick="toggleCard(this)" data-open="false">
+              <div style="display:flex; align-items:center; justify-content:space-between; user-select:none;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="color:#C2C2C0; font-size:10px;">●</span>
+                  <span style="font-size:12px; font-weight:700; color:var(--text);">시드랩</span>
+                  <span style="font-size:10px; color:var(--muted);">Seedlab</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <a href="https://seedlab.kr" target="_blank" onclick="event.stopPropagation();" style="display:flex; align-items:center; color:#AAB4FF; opacity:0.9; transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11.61 5.99l-4.98 4.98a3.25 3.25 0 0 1-4.60-4.60l4.98-4.98a2.17 2.17 0 0 1 3.07 3.07l-4.98 4.98a1.08 1.08 0 0 1-1.53-1.53l4.59-4.59" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <svg class="card-arrow" width="11" height="11" viewBox="0 0 11 11" style="flex-shrink:0; transition:transform 0.2s; color:var(--muted);">
+                    <path d="M1.5 3.5 L5.5 7.5 L9.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-detail" style="max-height:0; overflow:hidden; transition:max-height 0.25s ease;">
+                <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:grid; gap:4px;">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:6px;"><img src="https://ecimg.cafe24img.com/pg754b46071518007/purposed/web/product/medium/20260310/967b863ebe36c9127271da227fecd3eb.png" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/><img src="https://ecimg.cafe24img.com/pg754b46071518007/purposed/web/product/extra/big/20260213/304659f5aed80586223cf593f5432a2f.png" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/></div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">1. 핵심 포지션</span><br><span style="font-size:10px;">20~40대 여성</span> · 이너뷰티 및 스킨케어. 과학 기반 프리미엄.</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">2. 매출 및 성장</span><br>비상장 스타트업, 재무공시 없음</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">3. 히어로 제품</span><br>라이스 글로우 리셋 클렌저 (25,900원 / 90g) / 모공 케어·각질 정돈</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">4. 입점 채널</span><br>자사몰, 이마트몰</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">5. 의견</span><br>타겟층은 동일하나 포지션이 다름 — 이너뷰티 vs 건기식.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 프리미엄 웰니스 -->
+          <div style="margin-bottom:14px;">
+            <div style="font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); background:var(--surface-gray); padding:4px 8px; border-radius:2px; display:inline-block; margin-bottom:8px;">프리미엄 웰니스</div>
+            <!-- 이야이야앤프렌즈 -->
+            <div style="padding:10px 12px; background:var(--surface-gray); border-radius:3px; border-left:3px solid #8A8A88; margin-bottom:6px; cursor:pointer;" onclick="toggleCard(this)" data-open="false">
+              <div style="display:flex; align-items:center; justify-content:space-between; user-select:none;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="color:#8A8A88; font-size:10px;">●</span>
+                  <span style="font-size:12px; font-weight:700; color:var(--text);">이야이야앤프렌즈</span>
+                  <span style="font-size:10px; color:var(--muted);">Yiayia & Friends</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <a href="https://yiayiaandfriends.co.kr" target="_blank" onclick="event.stopPropagation();" style="display:flex; align-items:center; color:#AAB4FF; opacity:0.9; transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11.61 5.99l-4.98 4.98a3.25 3.25 0 0 1-4.60-4.60l4.98-4.98a2.17 2.17 0 0 1 3.07 3.07l-4.98 4.98a1.08 1.08 0 0 1-1.53-1.53l4.59-4.59" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <svg class="card-arrow" width="11" height="11" viewBox="0 0 11 11" style="flex-shrink:0; transition:transform 0.2s; color:var(--muted);">
+                    <path d="M1.5 3.5 L5.5 7.5 L9.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-detail" style="max-height:0; overflow:hidden; transition:max-height 0.25s ease;">
+                <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:grid; gap:4px;">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:6px;"><img src="https://ecimg.cafe24img.com/pg428b92659932001/yiayiastore/web/product/big/20251202/b9a256853501a80b9efbb78f264062ac.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/><img src="https://ecimg.cafe24img.com/pg428b92659932001/yiayiastore/web/product/medium/20251028/85e0729883234a444f852c5b913c41da.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/></div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">1. 핵심 포지션</span><br><span style="font-size:10px;">30~50대 여성</span> · 그리스 크레타 올리브오일 기반 라이프스타일 웰니스.</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">2. 매출 및 성장</span><br>약 164억 (2024) · 2025 RED DOT 수상 · 슈퍼이야이야 F&B 프랜차이즈 확장</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">3. 히어로 제품</span><br>엑스트라버진 올리브오일 (65,000원 / 500ml) / 항염·심혈관 건강</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">4. 입점 채널</span><br>29CM, W컨셉, 마켓컬리, 신세계몰, 카카오선물하기, 슈퍼이야이야 직영점</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">5. 의견</span><br>기능보다 원료·프리미엄 포지셔닝에 포커스한 커뮤니케이션 레퍼런스 — 기능 주장은 있되 전면에 내세우지 않는 언어 구조. 프리미엄 포지셔닝 위주로 참고.</div>
+                </div>
+              </div>
+            </div>
+            <!-- 오니스트 -->
+            <div style="padding:10px 12px; background:var(--surface-gray); border-radius:3px; border-left:3px solid #C2C2C0; cursor:pointer;" onclick="toggleCard(this)" data-open="false">
+              <div style="display:flex; align-items:center; justify-content:space-between; user-select:none;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="color:#C2C2C0; font-size:10px;">●</span>
+                  <span style="font-size:12px; font-weight:700; color:var(--text);">오니스트</span>
+                  <span style="font-size:10px; color:var(--muted);">주식회사 오니스트</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <a href="https://ownist.kr" target="_blank" onclick="event.stopPropagation();" style="display:flex; align-items:center; color:#AAB4FF; opacity:0.9; transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11.61 5.99l-4.98 4.98a3.25 3.25 0 0 1-4.60-4.60l4.98-4.98a2.17 2.17 0 0 1 3.07 3.07l-4.98 4.98a1.08 1.08 0 0 1-1.53-1.53l4.59-4.59" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <svg class="card-arrow" width="11" height="11" viewBox="0 0 11 11" style="flex-shrink:0; transition:transform 0.2s; color:var(--muted);">
+                    <path d="M1.5 3.5 L5.5 7.5 L9.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-detail" style="max-height:0; overflow:hidden; transition:max-height 0.25s ease;">
+                <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:grid; gap:4px;">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:6px;"><img src="https://ownist.kr/web/product/medium/202604/9844457c76cd39a81662362179e4afef.png" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/><img src="https://ownist.kr/web/product/medium/202602/5d775034e8c95e9f5a3ba2dd84eaae89.png" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/></div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">1. 핵심 포지션</span><br><span style="font-size:10px;">20~30대 여성</span> · 클린 이너뷰티. "고집스럽게 비우고, 신중하게 채웠다" 철학.</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">2. 매출 및 성장</span><br>약 104억 (2024) · 연 200%+ 성장 · 와디즈 먹는 콜라겐 카테고리 펀딩 1위</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">3. 히어로 제품</span><br>트리플콜라겐 (36,700원 / 14포) / 피부 탄력·보습</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">4. 입점 채널</span><br>올리브영, 29CM, W컨셉, 무신사, 신라면세점, 자사몰</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">5. 의견</span><br>콜라겐 2종으로 인지도를 키웠지만 기능 중심보다는 웰니스 루틴 중심 — 성분 및 기능 중심으로 차별화 가능.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 일반 건기식 -->
+          <div style="margin-bottom:14px;">
+            <div style="font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); background:var(--surface-gray); padding:4px 8px; border-radius:2px; display:inline-block; margin-bottom:8px;">일반 건기식</div>
+            <!-- 종근당건강 -->
+            <div style="padding:10px 12px; background:var(--surface-gray); border-radius:3px; border-left:3px solid #8A8A88; cursor:pointer;" onclick="toggleCard(this)" data-open="false">
+              <div style="display:flex; align-items:center; justify-content:space-between; user-select:none;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="color:#8A8A88; font-size:10px;">●</span>
+                  <span style="font-size:12px; font-weight:700; color:var(--text);">종근당건강</span>
+                  <span style="font-size:10px; color:var(--muted);">주식회사 종근당건강</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <a href="https://ckdhcmall.co.kr" target="_blank" onclick="event.stopPropagation();" style="display:flex; align-items:center; color:#AAB4FF; opacity:0.9; transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11.61 5.99l-4.98 4.98a3.25 3.25 0 0 1-4.60-4.60l4.98-4.98a2.17 2.17 0 0 1 3.07 3.07l-4.98 4.98a1.08 1.08 0 0 1-1.53-1.53l4.59-4.59" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <svg class="card-arrow" width="11" height="11" viewBox="0 0 11 11" style="flex-shrink:0; transition:transform 0.2s; color:var(--muted);">
+                    <path d="M1.5 3.5 L5.5 7.5 L9.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-detail" style="max-height:0; overflow:hidden; transition:max-height 0.25s ease;">
+                <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:grid; gap:4px;">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:6px;"><img src="https://s3.ckdhcmall.co.kr/upload/product/detail/65/b865287d-6366-4e9a-8180-75564bc46883.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/><img src="https://s3.ckdhcmall.co.kr/upload/product/detail/231/9868ed4d-d5a4-4171-aa56-963756132401.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/></div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">1. 핵심 포지션</span><br><span style="font-size:10px;">40~60대 남녀</span> · 제약 계열 신뢰 기반 기능성 건기식. "락토핏" 국민 유산균 1위</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">2. 매출 및 성장</span><br>약 3,400억 (2023) · 홈쇼핑·약국 대중 유통 중심</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">3. 히어로 제품</span><br>락토핏 골드 (39,900원 / 50포) / 유산균 80억·장 건강</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">4. 입점 채널</span><br>자사몰, TV홈쇼핑, 약국, 쿠팡, 올리브영</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">5. 의견</span><br>약국 신뢰 + 홈쇼핑 볼륨 — 바디게이트와 채널·타겟 겹침 없음. 기능 소구 방식만 참고.</div>
+                </div>
+              </div>
+            </div>
+            <!-- 푸응 -->
+            <div style="padding:10px 12px; background:var(--surface-gray); border-radius:3px; border-left:3px solid #C2C2C0; cursor:pointer;" onclick="toggleCard(this)" data-open="false">
+              <div style="display:flex; align-items:center; justify-content:space-between; user-select:none;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="color:#C2C2C0; font-size:10px;">●</span>
+                  <span style="font-size:12px; font-weight:700; color:var(--text);">푸응</span>
+                  <span style="font-size:10px; color:var(--muted);">닥터블릿헬스케어</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <a href="https://doctorblet.com" target="_blank" onclick="event.stopPropagation();" style="display:flex; align-items:center; color:#AAB4FF; opacity:0.9; transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11.61 5.99l-4.98 4.98a3.25 3.25 0 0 1-4.60-4.60l4.98-4.98a2.17 2.17 0 0 1 3.07 3.07l-4.98 4.98a1.08 1.08 0 0 1-1.53-1.53l4.59-4.59" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <svg class="card-arrow" width="11" height="11" viewBox="0 0 11 11" style="flex-shrink:0; transition:transform 0.2s; color:var(--muted);">
+                    <path d="M1.5 3.5 L5.5 7.5 L9.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-detail" style="max-height:0; overflow:hidden; transition:max-height 0.25s ease;">
+                <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:grid; gap:4px;">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:6px;"><img src="https://doctorblet.com/web/product/medium/202606/554ea599920fdd8239d75beb0d64576d.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/><img src="https://doctorblet.com/web/product/medium/202605/9d6f2dc5b1890b3b316bb0adaff53e37.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/></div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">1. 핵심 포지션</span><br><span style="font-size:10px;">40~60대 남녀</span> · 중장년 체지방 루틴 건기식. "나만의 건강 공식" 루틴화.</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">2. 매출 및 성장</span><br>약 752억 (2024 확정) · 약 1,000억 추산 (2025) · 4년간 폭발적 성장</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">3. 히어로 제품</span><br>팻버닝 프로 (32,900원 / 30캡슐) / 체지방 감소·에너지 대사</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">4. 입점 채널</span><br>롯데백화점, 올리브영, 다이소, 온누리약국(300개점), 쿠팡</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">5. 의견</span><br>연 752억 달성했지만 브랜드로 기억되지 않는 반면교사 — 기능 언어만으로는 브랜드 자산이 없음.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 대중 웰니스 -->
+          <div>
+            <div style="font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); background:var(--surface-gray); padding:4px 8px; border-radius:2px; display:inline-block; margin-bottom:8px;">대중 웰니스</div>
+            <!-- 푸드올로지 -->
+            <div style="padding:10px 12px; background:var(--surface-gray); border-radius:3px; border-left:3px solid #8A8A88; margin-bottom:6px; cursor:pointer;" onclick="toggleCard(this)" data-open="false">
+              <div style="display:flex; align-items:center; justify-content:space-between; user-select:none;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="color:#8A8A88; font-size:10px;">●</span>
+                  <span style="font-size:12px; font-weight:700; color:var(--text);">푸드올로지</span>
+                  <span style="font-size:10px; color:var(--muted);">주식회사 어댑트</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <a href="https://food-ology.co.kr" target="_blank" onclick="event.stopPropagation();" style="display:flex; align-items:center; color:#AAB4FF; opacity:0.9; transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11.61 5.99l-4.98 4.98a3.25 3.25 0 0 1-4.60-4.60l4.98-4.98a2.17 2.17 0 0 1 3.07 3.07l-4.98 4.98a1.08 1.08 0 0 1-1.53-1.53l4.59-4.59" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <svg class="card-arrow" width="11" height="11" viewBox="0 0 11 11" style="flex-shrink:0; transition:transform 0.2s; color:var(--muted);">
+                    <path d="M1.5 3.5 L5.5 7.5 L9.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-detail" style="max-height:0; overflow:hidden; transition:max-height 0.25s ease;">
+                <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:grid; gap:4px;">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:6px;"><img src="https://cafe24img.poxo.com/manfidence/web/product/medium/202412/ac09be963c1e338ee596e3bde3133618.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/><img src="https://cafe24img.poxo.com/manfidence/web/product/medium/202603/9ccf567dceceffb2820527b77d7a768a.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/></div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">1. 핵심 포지션</span><br><span style="font-size:10px;">20~30대 여성</span> · 습관 형성 포지셔닝.</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">2. 매출 및 성장</span><br>어댑트 헬스케어 부문 743억 (2022) · 올리브영 콜레올로지 3년 연속 1위 (2022~2024)</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">3. 히어로 제품</span><br>콜레올로지 (27,800원 / 15캡슐) / 체지방 감소·장 건강<br><span style="display:inline-block; margin-top:3px;">지중해 올리브 레몬 샷 (29,800원) / 올레샷 저속노화 루틴</span></div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">4. 입점 채널</span><br>올리브영, 코스트코, 무신사, 카카오톡스토어, G마켓, 11번가</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">5. 의견</span><br>올리브 레몬 샷을 액상 형태 / 캡슐 형태 두 제형으로 각각 출시해 진입 장벽을 낮춤. 라인 별 모델 기용하여 독립 브랜드처럼 전개. 브랜드 감성은 강하나 제품의 전문성이 약하여 기능 및 성분 중심 포지션으로 차별화 가능.</div>
+                </div>
+              </div>
+            </div>
+            <!-- 니아르 -->
+            <div style="padding:10px 12px; background:var(--surface-gray); border-radius:3px; border-left:3px solid #C2C2C0; margin-bottom:6px; cursor:pointer;" onclick="toggleCard(this)" data-open="false">
+              <div style="display:flex; align-items:center; justify-content:space-between; user-select:none;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="color:#C2C2C0; font-size:10px;">●</span>
+                  <span style="font-size:12px; font-weight:700; color:var(--text);">NE:AR</span>
+                  <span style="font-size:10px; color:var(--muted);">주식회사 페슬</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <a href="https://ne-ar.kr" target="_blank" onclick="event.stopPropagation();" style="display:flex; align-items:center; color:#AAB4FF; opacity:0.9; transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11.61 5.99l-4.98 4.98a3.25 3.25 0 0 1-4.60-4.60l4.98-4.98a2.17 2.17 0 0 1 3.07 3.07l-4.98 4.98a1.08 1.08 0 0 1-1.53-1.53l4.59-4.59" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                  <svg class="card-arrow" width="11" height="11" viewBox="0 0 11 11" style="flex-shrink:0; transition:transform 0.2s; color:var(--muted);">
+                    <path d="M1.5 3.5 L5.5 7.5 L9.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-detail" style="max-height:0; overflow:hidden; transition:max-height 0.25s ease;">
+                <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:grid; gap:4px;">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:6px;"><img src="https://ne-ar.kr/web/product/big/202604/a5cfbb5a3328c525f50babf1bc2ddba2.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/><img src="https://ne-ar.kr/web/product/big/202601/348ca3608350b0ca78a8b139272ff14a.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px;" onerror="this.style.visibility='hidden'"/></div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">1. 핵심 포지션</span><br><span style="font-size:10px;">20~30대 여성</span> · TWICE 사나 앰버서더. 브랜디드 편의성 + 프리미엄 큐레이션.</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">2. 매출 및 성장</span><br>약 400억 (2024) · 연 200%+ 성장 · 2025 고객감동 우수브랜드 이너뷰티 1위</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">3. 히어로 제품</span><br>브이케어 (34,900원 / 28정) / 얼굴 윤곽·부종 완화</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">4. 입점 채널</span><br>무신사, 29CM, W컨셉, 신라면세점, 쿠팡</div>
+                  <div style="font-size:11px; line-height:1.6;"><span style="color:var(--muted); font-size:10px; letter-spacing:0.05em;">5. 의견</span><br>타겟 인접 브랜딩 레퍼런스 — 앰배서더 의존 한계가 성분 전문성 기반 신뢰가 필요한 이유.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 리브랜딩 일정 -->
+  <div class="section" style="padding:32px 0;">
+    <div class="section-header" style="margin-bottom:20px;">
+      <span class="section-label" style="white-space:nowrap;">Schedule</span>
+    </div>
+
+    <!-- 태스크 리스트 -->
+    <div style="margin-bottom:28px;">
+      <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Tasks &amp; Lead Time</div>
+      <table style="width:100%; border-collapse:collapse;">
+        <tr>
+          <th style="width:220px; text-align:left;">태스크</th>
+          <th style="width:72px; text-align:left;">리드타임</th>
+          <th style="text-align:left;">기간</th>
+        </tr>
+        <tr><td><span class="rb r1">R1</span>리브랜딩 요소 점검</td><td style="color:var(--muted); font-size:11px;">1일</td><td style="color:var(--muted); font-size:11px;">6/5</td></tr>
+        <tr><td><span class="rb r2">R2</span>레퍼런스 브랜드 선정·분석</td><td style="color:var(--muted); font-size:11px;">2일</td><td style="color:var(--muted); font-size:11px;">6/8 ~ 6/9</td></tr>
+        <tr><td><span class="rb r3">R3</span>브랜드 포지셔닝</td><td style="color:var(--muted); font-size:11px;">3일</td><td style="color:var(--muted); font-size:11px;">6/10 ~ 6/12</td></tr>
+        <tr><td><span class="rb r4">R4</span>패키지 디자인 (2종)</td><td style="color:var(--muted); font-size:11px;">약 2주</td><td style="color:var(--muted); font-size:11px;">7/6 ~ 7/17</td></tr>
+        <tr><td style="border-bottom:none;"><span class="rb r5">R5</span>웹사이트 디자인</td><td style="color:var(--muted); font-size:11px; border-bottom:none;">약 3주</td><td style="color:var(--muted); font-size:11px; border-bottom:none;">7/20 ~ 8/7</td></tr>
+      </table>
+    </div>
+
+    <div class="cal-wrap">
+
+      <div>
+      <div class="cal-title">2026년 6월</div>
+      <div class="cal-outer">
+<div class="cal-grid" style="border-bottom:1px solid var(--border);"><div class="cal-dh">일</div><div class="cal-dh">월</div><div class="cal-dh">화</div><div class="cal-dh">수</div><div class="cal-dh">목</div><div class="cal-dh">금</div><div class="cal-dh sat">토</div></div><div class="cal-row"><div class="cal-c dim"><div class="cal-n"><span>31</span></div></div><div class="cal-c"><div class="cal-n"><span>1</span></div></div><div class="cal-c"><div class="cal-n"><span>2</span></div></div><div class="cal-c"><div class="cal-n"><span>3</span></div></div><div class="cal-c"><div class="cal-n"><span>4</span></div></div><div class="cal-c today"><div class="cal-n"><span>5</span></div></div><div class="cal-c"><div class="cal-n"><span>6</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-g" style="left:calc(2/7*100% + 1px); width:calc(5/7*100% - 3px); top:0px;">캄랩 웹사이트 디자인</div><div class="cal-bar cal-bar-g" style="left:calc(4/7*100% + 1px); width:calc(1/7*100% - 3px); top:24px;">닥터세리티 징코빌리프</div><div class="cal-bar cal-bar-r1" style="left:calc(5/7*100% + 1px); width:calc(1/7*100% - 3px); top:24px;">R1 리브랜딩 요소 점검</div></div></div><div class="cal-row"><div class="cal-c"><div class="cal-n"><span>7</span></div></div><div class="cal-c"><div class="cal-n"><span>8</span></div></div><div class="cal-c"><div class="cal-n"><span>9</span></div></div><div class="cal-c"><div class="cal-n"><span>10</span></div></div><div class="cal-c"><div class="cal-n"><span>11</span></div></div><div class="cal-c"><div class="cal-n"><span>12</span></div></div><div class="cal-c"><div class="cal-n"><span>13</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-g" style="left:calc(0/7*100% + 1px); width:calc(6/7*100% - 3px); top:0px;">캄랩 웹사이트 디자인</div><div class="cal-bar cal-bar-r2" style="left:calc(1/7*100% + 1px); width:calc(2/7*100% - 3px); top:24px;">R2 레퍼런스</div><div class="cal-bar cal-bar-r3" style="left:calc(3/7*100% + 1px); width:calc(3/7*100% - 3px); top:24px;">R3 브랜드 포지셔닝</div></div></div><div class="cal-row"><div class="cal-c"><div class="cal-n"><span>14</span></div></div><div class="cal-c"><div class="cal-n"><span>15</span></div></div><div class="cal-c"><div class="cal-n"><span>16</span></div></div><div class="cal-c"><div class="cal-n"><span>17</span></div></div><div class="cal-c"><div class="cal-n"><span>18</span></div></div><div class="cal-c"><div class="cal-n"><span>19</span></div></div><div class="cal-c"><div class="cal-n"><span>20</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-g" style="left:calc(1/7*100% + 1px); width:calc(6/7*100% - 3px); top:0px;">누셀 웹사이트 디자인</div></div></div><div class="cal-row"><div class="cal-c"><div class="cal-n"><span>21</span></div></div><div class="cal-c"><div class="cal-n"><span>22</span></div></div><div class="cal-c"><div class="cal-n"><span>23</span></div></div><div class="cal-c"><div class="cal-n"><span>24</span></div></div><div class="cal-c"><div class="cal-n"><span>25</span></div></div><div class="cal-c"><div class="cal-n"><span>26</span></div></div><div class="cal-c"><div class="cal-n"><span>27</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-g" style="left:calc(0/7*100% + 1px); width:calc(7/7*100% - 3px); top:0px;">누셀 웹사이트 디자인</div></div></div><div class="cal-row last-row"><div class="cal-c"><div class="cal-n"><span>28</span></div></div><div class="cal-c"><div class="cal-n"><span>29</span></div></div><div class="cal-c"><div class="cal-n"><span>30</span></div></div><div class="cal-c dim"><div class="cal-n"><span>1</span></div></div><div class="cal-c dim"><div class="cal-n"><span>2</span></div></div><div class="cal-c dim"><div class="cal-n"><span>3</span></div></div><div class="cal-c dim"><div class="cal-n"><span>4</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-g" style="left:calc(0/7*100% + 1px); width:calc(3/7*100% - 3px); top:0px;">누셀 웹사이트 디자인</div><div class="cal-bar cal-bar-g" style="left:calc(1/7*100% + 1px); width:calc(2/7*100% - 3px); top:24px;">닥터세리티 혈당·콜레스테롤 패키지 디자인</div></div></div>
+</div>
+      </div>
+      
+      <div>
+      <div class="cal-title">2026년 7월</div>
+      <div class="cal-outer">
+<div class="cal-grid" style="border-bottom:1px solid var(--border);"><div class="cal-dh">일</div><div class="cal-dh">월</div><div class="cal-dh">화</div><div class="cal-dh">수</div><div class="cal-dh">목</div><div class="cal-dh">금</div><div class="cal-dh sat">토</div></div><div class="cal-row"><div class="cal-c dim"><div class="cal-n"><span>28</span></div></div><div class="cal-c dim"><div class="cal-n"><span>29</span></div></div><div class="cal-c dim"><div class="cal-n"><span>30</span></div></div><div class="cal-c"><div class="cal-n"><span>1</span></div></div><div class="cal-c"><div class="cal-n"><span>2</span></div></div><div class="cal-c"><div class="cal-n"><span>3</span></div></div><div class="cal-c"><div class="cal-n"><span>4</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-g" style="left:calc(3/7*100% + 1px); width:calc(3/7*100% - 3px); top:0px;">누셀 웹사이트</div><div class="cal-bar cal-bar-g" style="left:calc(3/7*100% + 1px); width:calc(4/7*100% - 3px); top:24px;">닥터세리티 혈당·콜레스테롤 패키지 디자인</div></div></div><div class="cal-row"><div class="cal-c"><div class="cal-n"><span>5</span></div></div><div class="cal-c"><div class="cal-n"><span>6</span></div></div><div class="cal-c"><div class="cal-n"><span>7</span></div></div><div class="cal-c"><div class="cal-n"><span>8</span></div></div><div class="cal-c"><div class="cal-n"><span>9</span></div></div><div class="cal-c"><div class="cal-n"><span>10</span></div></div><div class="cal-c"><div class="cal-n"><span>11</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-r4" style="left:calc(1/7*100% + 1px); width:calc(6/7*100% - 3px); top:0px;">R4 패키지 디자인</div><div class="cal-bar cal-bar-g" style="left:calc(0/7*100% + 1px); width:calc(3/7*100% - 3px); top:24px;">닥터세리티 혈당·콜레스테롤 패키지 디자인</div></div></div><div class="cal-row"><div class="cal-c"><div class="cal-n"><span>12</span></div></div><div class="cal-c"><div class="cal-n"><span>13</span></div></div><div class="cal-c"><div class="cal-n"><span>14</span></div></div><div class="cal-c"><div class="cal-n"><span>15</span></div></div><div class="cal-c"><div class="cal-n"><span>16</span></div></div><div class="cal-c"><div class="cal-n"><span>17</span></div></div><div class="cal-c"><div class="cal-n"><span>18</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-r4" style="left:calc(0/7*100% + 1px); width:calc(6/7*100% - 3px); top:0px;">R4 패키지 디자인</div></div></div><div class="cal-row"><div class="cal-c"><div class="cal-n"><span>19</span></div></div><div class="cal-c"><div class="cal-n"><span>20</span></div></div><div class="cal-c"><div class="cal-n"><span>21</span></div></div><div class="cal-c"><div class="cal-n"><span>22</span></div></div><div class="cal-c"><div class="cal-n"><span>23</span></div></div><div class="cal-c"><div class="cal-n"><span>24</span></div></div><div class="cal-c"><div class="cal-n"><span>25</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-r5" style="left:calc(1/7*100% + 1px); width:calc(6/7*100% - 3px); top:0px;">R5 웹사이트 디자인</div></div></div><div class="cal-row last-row"><div class="cal-c"><div class="cal-n"><span>26</span></div></div><div class="cal-c"><div class="cal-n"><span>27</span></div></div><div class="cal-c"><div class="cal-n"><span>28</span></div></div><div class="cal-c"><div class="cal-n"><span>29</span></div></div><div class="cal-c"><div class="cal-n"><span>30</span></div></div><div class="cal-c"><div class="cal-n"><span>31</span></div></div><div class="cal-c dim"><div class="cal-n"><span>1</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-r5" style="left:calc(0/7*100% + 1px); width:calc(6/7*100% - 3px); top:0px;">R5 웹사이트 디자인</div></div></div>
+</div>
+      </div>
+      
+      <div>
+      <div class="cal-title">2026년 8월</div>
+      <div class="cal-outer">
+<div class="cal-grid" style="border-bottom:1px solid var(--border);"><div class="cal-dh">일</div><div class="cal-dh">월</div><div class="cal-dh">화</div><div class="cal-dh">수</div><div class="cal-dh">목</div><div class="cal-dh">금</div><div class="cal-dh sat">토</div></div><div class="cal-row"><div class="cal-c dim"><div class="cal-n"><span>26</span></div></div><div class="cal-c dim"><div class="cal-n"><span>27</span></div></div><div class="cal-c dim"><div class="cal-n"><span>28</span></div></div><div class="cal-c dim"><div class="cal-n"><span>29</span></div></div><div class="cal-c dim"><div class="cal-n"><span>30</span></div></div><div class="cal-c dim"><div class="cal-n"><span>31</span></div></div><div class="cal-c"><div class="cal-n"><span>1</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-r5" style="left:calc(6/7*100% + 1px); width:calc(1/7*100% - 3px); top:0px;">R5</div></div></div><div class="cal-row"><div class="cal-c"><div class="cal-n"><span>2</span></div></div><div class="cal-c"><div class="cal-n"><span>3</span></div></div><div class="cal-c"><div class="cal-n"><span>4</span></div></div><div class="cal-c"><div class="cal-n"><span>5</span></div></div><div class="cal-c"><div class="cal-n"><span>6</span></div></div><div class="cal-c"><div class="cal-n"><span>7</span></div></div><div class="cal-c"><div class="cal-n"><span>8</span></div></div><div class="cal-ev-layer"><div class="cal-bar cal-bar-r5" style="left:calc(0/7*100% + 1px); width:calc(6/7*100% - 3px); top:0px;">R5 웹사이트 디자인</div></div></div><div class="cal-row last-row"><div class="cal-c"><div class="cal-n"><span>9</span></div></div><div class="cal-c"><div class="cal-n"><span>10</span></div></div><div class="cal-c"><div class="cal-n"><span>11</span></div></div><div class="cal-c"><div class="cal-n"><span>12</span></div></div><div class="cal-c"><div class="cal-n"><span>13</span></div></div><div class="cal-c"><div class="cal-n"><span>14</span></div></div><div class="cal-c"><div class="cal-n"><span>15</span></div></div></div>
+</div>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- 컬러 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Color System</span>
+    </div>
+    <div style="margin-bottom:28px;">
+      <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Primary Colors</div>
+      <div class="grid-5" style="margin-bottom:16px;">
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#FFFFFF; border:1px solid var(--border);"></div>
+          <div class="color-info"><div class="color-name">White</div><div class="color-hex">#FFFFFF</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#F7F7F5;"></div>
+          <div class="color-info"><div class="color-name">Light Gray</div><div class="color-hex">#F7F7F5</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#0F0F0F;"></div>
+          <div class="color-info" style="background:#262626;"><div class="color-name" style="color:#fff;">Black</div><div class="color-hex" style="color:#888;">#0F0F0F</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#FF5E3B;"></div>
+          <div class="color-info" style="background:#3a1508;"><div class="color-name" style="color:#FF5E3B;">Sunset Coral Red</div><div class="color-hex" style="color:#cc8870;">#FF5E3B ★</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#112750;"></div>
+          <div class="color-info" style="background:#0a1828;"><div class="color-name" style="color:#CFD4DC;">Night Oxford Blue</div><div class="color-hex" style="color:#707D96;">#112750</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom:28px;">
+      <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Sunset Coral Red — Tints</div>
+      <div class="grid-5">
+        <div class="color-chip"><div class="color-swatch" style="background:#FF5E3B;"></div><div class="color-info"><div class="color-name">Base</div><div class="color-hex">#FF5E3B</div></div></div>
+        <div class="color-chip"><div class="color-swatch" style="background:#FF7E62;"></div><div class="color-info"><div class="color-name">Tint 01</div><div class="color-hex">#FF7E62</div></div></div>
+        <div class="color-chip"><div class="color-swatch" style="background:#FF9E87;"></div><div class="color-info"><div class="color-name">Tint 02</div><div class="color-hex">#FF9E87</div></div></div>
+        <div class="color-chip"><div class="color-swatch" style="background:#FFBFB1;"></div><div class="color-info"><div class="color-name">Tint 03</div><div class="color-hex">#FFBFB1</div></div></div>
+        <div class="color-chip"><div class="color-swatch" style="background:#FFEFEC;"></div><div class="color-info"><div class="color-name">Tint 04</div><div class="color-hex">#FFEFEC</div></div></div>
+      </div>
+    </div>
+    <div style="margin-bottom:28px;">
+      <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Night Oxford Blue — Tints</div>
+      <div class="grid-5">
+        <div class="color-chip"><div class="color-swatch" style="background:#112750;"></div><div class="color-info" style="background:#0a1828;"><div class="color-name" style="color:#CFD4DC;">Base</div><div class="color-hex" style="color:#707D96;">#112750</div></div></div>
+        <div class="color-chip"><div class="color-swatch" style="background:#415273;"></div><div class="color-info" style="background:#2a3548;"><div class="color-name" style="color:#CFD4DC;">Tint 01</div><div class="color-hex" style="color:#707D96;">#415273</div></div></div>
+        <div class="color-chip"><div class="color-swatch" style="background:#707D96;"></div><div class="color-info"><div class="color-name">Tint 02</div><div class="color-hex">#707D96</div></div></div>
+        <div class="color-chip"><div class="color-swatch" style="background:#A0A9B9;"></div><div class="color-info"><div class="color-name">Tint 03</div><div class="color-hex">#A0A9B9</div></div></div>
+        <div class="color-chip"><div class="color-swatch" style="background:#CFD4DC;"></div><div class="color-info"><div class="color-name">Tint 04</div><div class="color-hex">#CFD4DC</div></div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Color Hierarchy</div>
+      <div style="display:flex; gap:4px; align-items:stretch; height:56px; margin-bottom:8px; border-radius:4px; overflow:hidden; border:1px solid var(--border);">
+        <div style="flex:35; background:#FFFFFF; display:flex; align-items:center; justify-content:center;"><span style="font-size:10px;color:var(--muted);">White 35%</span></div>
+        <div style="flex:45; background:#F7F7F5; display:flex; align-items:center; justify-content:center;"><span style="font-size:10px;color:var(--muted);">Light Gray 45%</span></div>
+        <div style="flex:10; background:#0F0F0F; display:flex; align-items:center; justify-content:center;"><span style="font-size:10px;color:#555;">10%</span></div>
+        <div style="flex:10; background:#FF5E3B; display:flex; align-items:center; justify-content:center;"><span style="font-size:10px;color:#fff;">10%</span></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);">White·Light Gray 배경 80% / Black 10% / Coral Red·Oxford Blue 포인트 20%</div>
+    </div>
+  </div>
+
+  <!-- 로고 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Logo</span>
+    </div>
+    <div class="grid-2">
+      <div class="logo-version-wrap">
+        <div class="logo-version-label">Basic ver.</div>
+        <img src="NEW_BODYGATE_LOGO_B.png" alt="BODY GATE" class="logo-version-img">
+        <div style="font-size:11px;color:var(--muted);margin-top:16px;">Alido Regular / Leight 100% / Weight 102%</div>
+      </div>
+      <div class="logo-version-wrap">
+        <div class="logo-version-label">Lock UP ver.</div>
+        <div style="text-align:center;">
+          <img src="NEW_BODYGATE_LOGO_B.png" alt="BODY GATE" class="logo-version-img"><br>
+          <span style="font-size:9px; letter-spacing:0.25em; color:var(--muted); text-transform:uppercase; margin-top:6px; display:inline-block;">RESET REBALANCE</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-top:16px;">브랜드 슬로건 서브텍스트 포함</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <div class="card">
+        <div class="card-label">사용 규정</div>
+        <div class="card-value" style="font-size:12px; line-height:2;">
+          최소 여백: 로고 'x' 높이 1/6 확보 &nbsp;|&nbsp; 온라인 최소 28px / 프린트 8mm &nbsp;|&nbsp; 멀티컬러·그라데이션·이미지 배치 금지 &nbsp;|&nbsp; 어두운 배경 사용 금지
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 타이포그래피 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Typography</span>
+    </div>
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-label">EN Title — Creato Display</div>
+        <div style="font-size:20px; letter-spacing:0.02em; color:var(--text); margin-bottom:10px;">Reset. Rebalance. Find your rhythm.</div>
+        <div style="font-size:11px; color:var(--muted); line-height:1.9;">Regular / Medium / Bold<br>Kerning 2% / Leading ×1.1<br>라이센스: SIL OFL 1.1 — 상업용 가능</div>
+      </div>
+      <div class="card">
+        <div class="card-label">KR Title — Noto Sans KR</div>
+        <div style="font-size:20px; color:var(--text); margin-bottom:10px;">비우고 조율하며, 나의 리듬으로.</div>
+        <div style="font-size:11px; color:var(--muted); line-height:1.9;">Semi Bold 600 / Bold 700 / Extra Bold 800<br>Kerning 2~4% / Leading ×1.2<br>본문: Demi Light 350 ~ Medium 500</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">로고 전용 — Alido Regular</div>
+      <div class="card-value" style="font-size:12px;">Leight 100% / Weight 102% — 로고 워드마크 전용. 타이포 시스템과 별도이며 본문·헤드라인 사용 금지.</div>
+    </div>
+  </div>
+
+  <!-- 타겟 & 포지셔닝 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Strategy</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Target</div>
+        <div class="pos-row">
+          <div class="pos-key">메인 타겟</div>
+          <div class="pos-val">불규칙한 식단, 스트레스, 노화를 겪는 여성 (주 20~40대)</div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-key">서브 타겟</div>
+          <div class="pos-val">임산부 라인 별도 타겟 — 준비기~산후 5단계</div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-key">고객 보이스</div>
+          <div class="pos-val">"나를 방치하지 않고 소중히 관리한다는 느낌"<br>"챙겨 먹고 안 먹고의 차이가 너무 크더라고요"</div>
+        </div>
+        <div style="margin-top:16px; padding:16px; background:var(--surface-gray); border-radius:4px;">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Brand Tone</div>
+          <div style="font-size:12px; color:var(--muted); line-height:2;">과학적이지만 따뜻한 &nbsp;·&nbsp; 체계적이지만 유연한 &nbsp;·&nbsp; 강인하지만 섬세한</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Positioning</div>
+        <div class="pos-row">
+          <div class="pos-key">핵심 논리</div>
+          <div class="pos-val">"화장품은 표피까지만 → 진피는 혈관으로 영양 공급" — 먹는 건기식이 더 근본적</div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-key">Market Gap</div>
+          <div class="pos-val">수면×콜라겐 교차 카테고리 선점 기회<br>지성 피부 속건조 케어 영역 공백</div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-key">경쟁사</div>
+          <div class="pos-val">에버콜라겐 (건기식 인증 강점) &nbsp;/&nbsp; NE:AR (사나, 2030) &nbsp;/&nbsp; 애터미 (고기능성) &nbsp;/&nbsp; 푸응 (4060 루틴 체지방, 752억)</div>
+        </div>
+        <div class="pos-row" style="border:none;">
+          <div class="pos-key">필수 조건</div>
+          <div class="pos-val">식약처 건강기능식품 인증 마크 필수</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Competitive Analysis 섹션 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Competitive Analysis</span>
+      <span style="font-size:11px; color:var(--muted); font-weight:400; letter-spacing:0; text-transform:none;">리포지셔닝 레퍼런스 브랜드 분석 (2026-06-09)</span>
+    </div>
+
+    <!-- 상단 분류 레이블 -->
+    <div style="display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap;">
+      <span style="font-size:10px; letter-spacing:0.1em; padding:4px 10px; background:#FFF3F0; color:var(--coral); border-radius:2px; border:1px solid var(--coral-light);">DIRECT COMPETITOR</span>
+      <span style="font-size:10px; letter-spacing:0.1em; padding:4px 10px; background:#EBF5F2; color:#1A7A5E; border-radius:2px; border:1px solid #A8D9CE;">CREATIVE REF</span>
+      <span style="font-size:10px; letter-spacing:0.1em; padding:4px 10px; background:#F0F3F7; color:var(--navy); border-radius:2px; border:1px solid var(--navy-light);">STRATEGY REF</span>
+      <span style="font-size:10px; letter-spacing:0.1em; padding:4px 10px; background:var(--surface-gray); color:var(--muted); border-radius:2px; border:1px solid var(--border);">MARKET CONTEXT</span>
+      <span style="font-size:10px; letter-spacing:0.1em; padding:4px 10px; background:#FFF8F0; color:#C96A00; border-radius:2px; border:1px solid #F0C98A;">COUNTER REF</span>
+    </div>
+
+    <!-- 5개 브랜드 카드 -->
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-bottom:32px;">
+
+      <!-- 푸응 -->
+      <div style="background:var(--surface-gray); border-radius:4px; padding:20px; border-top:3px solid var(--coral);">
+        <div style="font-size:10px; letter-spacing:0.1em; color:var(--coral); margin-bottom:10px; text-transform:uppercase;">Direct Competitor</div>
+        <div style="font-size:16px; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">푸응</div>
+        <div style="font-size:11px; color:var(--muted); margin-bottom:14px;">Dr. Blet Healthcare</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">핵심 포지션</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">4060 신중년 체지방 관리<br>루틴 건기식 (Ready-Core)</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">매출 / 성장</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">752억 (2024)<br>4년간 1,000%+ 성장</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">핵심 언어</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">"팻버닝 / 나이트버닝"<br>7 Days 루틴 시스템</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">채널</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:16px;">롯데백화점·올리브영·<br>다이소·약국 멀티채널</div>
+        <div style="padding:12px; background:#FFF3F0; border-radius:3px; border-left:3px solid var(--coral);">
+          <div style="font-size:10px; font-weight:700; color:var(--coral); margin-bottom:4px;">⚠ 주의</div>
+          <div style="font-size:11px; color:var(--text); line-height:1.6;">RESET→REBALANCE→RHYTHM이 "7 Days 루틴"과 겹치지 않도록 차별화 언어 필수. 바디게이트의 차별점은 "태운다" 아닌 <strong>"리듬을 회복한다"</strong></div>
+        </div>
+      </div>
+
+      <!-- 이야이야앤프렌즈 -->
+      <div style="background:var(--surface-gray); border-radius:4px; padding:20px; border-top:3px solid #1A7A5E;">
+        <div style="font-size:10px; letter-spacing:0.1em; color:#1A7A5E; margin-bottom:10px; text-transform:uppercase;">Creative Ref</div>
+        <div style="font-size:16px; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">이야이야앤프렌즈</div>
+        <div style="font-size:11px; color:var(--muted); margin-bottom:14px;">Yiayia & Friends · 올리브오일 라이프스타일</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">핵심 포지션</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">그리스 전통 × 현대 라이프스타일<br>웰니스 + 디자인 + 스토리텔링</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">핵심 슬로건</div>
+        <div style="font-size:12px; line-height:1.7; font-style:italic; margin-bottom:12px;">"Here, Life is Simple"</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">채널</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">29CM·W컨셉·마켓컬리<br>DDP 팝업·슈퍼이야이야 F&B</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">올레샷 연결점</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:16px;">올리브오일+레몬즙 성분 접점<br>라이프스타일 포지션 참고 가능</div>
+        <div style="padding:12px; background:#EBF5F2; border-radius:3px; border-left:3px solid #1A7A5E;">
+          <div style="font-size:10px; font-weight:700; color:#1A7A5E; margin-bottom:4px;">✓ 활용 포인트</div>
+          <div style="font-size:11px; color:var(--text); line-height:1.6;">스토리텔링 품질과 비주얼 언어 레퍼런스. 카테고리 무관 — 브랜드를 "제품"이 아닌 <strong>"라이프스타일"로 읽히게</strong> 만드는 방식 참고</div>
+        </div>
+      </div>
+
+      <!-- 비피젠 -->
+      <div style="background:var(--surface-gray); border-radius:4px; padding:20px; border-top:3px solid var(--navy);">
+        <div style="font-size:10px; letter-spacing:0.1em; color:var(--navy); margin-bottom:10px; text-transform:uppercase;">Strategy Ref</div>
+        <div style="font-size:16px; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">비피젠</div>
+        <div style="font-size:11px; color:var(--muted); margin-bottom:14px;">주식회사 이삼오구 · 프로바이오틱스</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">핵심 포지션</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">"100% 비피더스균" 단일 성분<br>과학 기반 프리미엄</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">매출 / 성장</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">600억 (2022)<br>창립 4년 1,000%+ 성장</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">차별화 전략</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">단 하나의 성분을 깊게 파서<br>카테고리 전문가로 포지셔닝</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">콜드체인 패키징</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:16px;">보냉백 별도 판매 →<br>"살아있는 균" 신뢰 시각화</div>
+        <div style="padding:12px; background:#F0F3F7; border-radius:3px; border-left:3px solid var(--navy);">
+          <div style="font-size:10px; font-weight:700; color:var(--navy); margin-bottom:4px;">✓ 활용 포인트</div>
+          <div style="font-size:11px; color:var(--text); line-height:1.6;">퀘르파인 패키지 착수 시 "퀘르세틴 × 소나무 추출" <strong>복합 시너지 메커니즘</strong>을 과학적 언어로 고도화하는 전략 방식 참고</div>
+        </div>
+      </div>
+
+      <!-- 종근당건강 -->
+      <div style="background:var(--surface-gray); border-radius:4px; padding:20px; border-top:3px solid var(--border-dark);">
+        <div style="font-size:10px; letter-spacing:0.1em; color:var(--muted); margin-bottom:10px; text-transform:uppercase;">Market Context</div>
+        <div style="font-size:16px; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">종근당건강</div>
+        <div style="font-size:11px; color:var(--muted); margin-bottom:14px;">CKD Healthcare · 제약 기반 건기식</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">시장 위치</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">국내 유산균 건기식 1위<br>약 3,400억 매출 (2023)</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">히어로 제품</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">락토핏 골드 (유산균 80억)<br>비타민C · 오메가3</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">핵심 언어</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">제약 신뢰 + 기능 소구<br>40~60대 가족 건강 관리</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">채널</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:16px;">TV홈쇼핑 · 약국 · 쿠팡<br>올리브영</div>
+        <div style="padding:12px; background:var(--surface-gray); border-radius:3px; border-left:3px solid var(--border-dark); border:1px solid var(--border);">
+          <div style="font-size:10px; font-weight:700; color:var(--muted); margin-bottom:4px;">— 참고 범위</div>
+          <div style="font-size:11px; color:var(--text); line-height:1.6;">직접 경쟁 아님. 기능성 대중 건기식의 볼륨 채널 구조 이해용. 약국·홈쇼핑 중심 매스 유통 — 바디게이트가 피해야 할 채널 구조 참고.</div>
+        </div>
+      </div>
+
+      <!-- 니아르 -->
+      <div style="background:var(--surface-gray); border-radius:4px; padding:20px; border-top:3px solid #C96A00;">
+        <div style="font-size:10px; letter-spacing:0.1em; color:#C96A00; margin-bottom:10px; text-transform:uppercase;">Counter Ref</div>
+        <div style="font-size:16px; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">NE:AR</div>
+        <div style="font-size:11px; color:var(--muted); margin-bottom:14px;">주식회사 페슬 · 이너뷰티</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">핵심 포지션</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">2030 여성 이너뷰티<br>TWICE 사나 앰버서더</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">매출 / 성장</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">런칭 당일 1억 달성<br>연 200%+ 성장</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">핵심 언어</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:12px;">"달콤한 다이어트 습관"<br>캔디 제형 · 편의성</div>
+        <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">채널</div>
+        <div style="font-size:12px; line-height:1.7; margin-bottom:16px;">무신사·29CM·W컨셉<br>신라면세점 · 일본 진출</div>
+        <div style="padding:12px; background:#FFF8F0; border-radius:3px; border-left:3px solid #C96A00;">
+          <div style="font-size:10px; font-weight:700; color:#C96A00; margin-bottom:4px;">✗ 안 가는 방향</div>
+          <div style="font-size:11px; color:var(--text); line-height:1.6;">타깃·무드 모두 바디게이트와 맞지 않음. 팝 이너뷰티 방향으로 가지 않기 위한 <strong>반면교사 포지션</strong></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 리포지셔닝 인사이트 요약 -->
+    <div style="background:var(--navy); border-radius:4px; padding:28px 32px; color:#fff;">
+      <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:16px;">Repositioning Insight</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+        <div>
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px;">Key Risk</div>
+          <div style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.9);">푸응이 선점한 "4060 루틴 체지방" 포지션에 후발주자로 진입하면 브랜드 희석. 동일 언어(루틴·버닝) 사용 금지.</div>
+        </div>
+        <div>
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px;">Differentiation Vector</div>
+          <div style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.9);">태우는 게 아니라 <strong style="color:#fff;">리듬을 회복한다</strong>. RESET→REBALANCE→RHYTHM 언어를 라이프스타일 서사로 고도화.</div>
+        </div>
+        <div>
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px;">Next Action</div>
+          <div style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.9);">퀘르파인 패키지 디자인 착수 시 비피젠식 과학적 전문성 + 퀘르세틴×소나무 성분 시너지 서사 + 이야이야앤프렌즈식 스토리텔링 품질 결합.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="footer">
+  <span>BODYGATE REBRANDING PROJECT</span>
+  <span>2026.06.09 &nbsp;·&nbsp; Competitive Analysis 추가</span>
+</div>
+
+<script>
+  function switchTab(name) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active-before', 'active-after'));
+    document.getElementById('panel-' + name).classList.add('active');
+    document.getElementById('tab-' + name).classList.add(name === 'before' ? 'active-before' : 'active-after');
+  }
+</script>
+<script>
+(function () {
+  var svg       = document.getElementById('pos-map-svg');
+  var asisCirc  = document.getElementById('asis-dot');
+  var tobeCirc  = document.getElementById('tobe-dot');
+  var asisLabel = document.getElementById('asis-label');
+  var tobeLabel = document.getElementById('tobe-label');
+  var arrow     = svg.querySelector('.dash-arrow');
+  var grad      = document.getElementById('arrowGrad');
+
+  var ripples = svg.querySelectorAll('.tobe-ripple');
+  var dragging = null, ox = 0, oy = 0;
+
+  function svgPt(evt) {
+    var p = svg.createSVGPoint();
+    var src = evt.touches ? evt.touches[0] : evt;
+    p.x = src.clientX; p.y = src.clientY;
+    return p.matrixTransform(svg.getScreenCTM().inverse());
+  }
+
+  function onDown(el, evt) {
+    dragging = el;
+    var p = svgPt(evt);
+    ox = p.x - parseFloat(el.getAttribute('cx'));
+    oy = p.y - parseFloat(el.getAttribute('cy'));
+    el.style.cursor = 'grabbing';
+    evt.preventDefault();
+  }
+
+  asisCirc.addEventListener('mousedown',  function(e){ onDown(asisCirc, e); });
+  tobeCirc.addEventListener('mousedown',  function(e){ onDown(tobeCirc, e); });
+  asisCirc.addEventListener('touchstart', function(e){ onDown(asisCirc, e); }, {passive:false});
+  tobeCirc.addEventListener('touchstart', function(e){ onDown(tobeCirc, e); }, {passive:false});
+
+  function onMove(evt) {
+    if (!dragging) return;
+    evt.preventDefault();
+    var p = svgPt(evt);
+    var x = p.x - ox, y = p.y - oy;
+    dragging.setAttribute('cx', x);
+    dragging.setAttribute('cy', y);
+    if (dragging === asisCirc) {
+      asisLabel.setAttribute('x', x);
+      asisLabel.setAttribute('y', y + 22);
+    } else {
+      tobeLabel.setAttribute('x', x);
+      tobeLabel.setAttribute('y', y - 16);
+      ripples.forEach(function(r) { r.setAttribute('cx', x); r.setAttribute('cy', y); });
+    }
+    updateArrow();
+  }
+
+  function onUp() {
+    if (dragging) dragging.style.cursor = 'grab';
+    dragging = null;
+  }
+
+  svg.addEventListener('mousemove',  onMove);
+  svg.addEventListener('touchmove',  onMove, {passive:false});
+  svg.addEventListener('mouseup',    onUp);
+  svg.addEventListener('touchend',   onUp);
+  svg.addEventListener('mouseleave', onUp);
+
+  function updateArrow() {
+    var x1 = parseFloat(asisCirc.getAttribute('cx'));
+    var y1 = parseFloat(asisCirc.getAttribute('cy'));
+    var x2 = parseFloat(tobeCirc.getAttribute('cx'));
+    var y2 = parseFloat(tobeCirc.getAttribute('cy'));
+    var dx = x2-x1, dy = y2-y1;
+    var len = Math.sqrt(dx*dx+dy*dy) || 1;
+    var r = 11;
+    var nx = dx/len*r, ny = dy/len*r;
+    arrow.setAttribute('x1', x1+nx); arrow.setAttribute('y1', y1+ny);
+    arrow.setAttribute('x2', x2-nx); arrow.setAttribute('y2', y2-ny);
+    grad.setAttribute('x1', x1+nx);  grad.setAttribute('y1', y1+ny);
+    grad.setAttribute('x2', x2-nx);  grad.setAttribute('y2', y2-ny);
+  }
+
+  var savedAsis = {cx:192, cy:308};
+  var savedTobe = {cx:240, cy:155};
+
+  function moveRipples(x, y) {
+    ripples.forEach(function(r) { r.setAttribute('cx', x); r.setAttribute('cy', y); });
+  }
+
+  window.resetPositions = function() {
+    asisCirc.setAttribute('cx', savedAsis.cx); asisCirc.setAttribute('cy', savedAsis.cy);
+    asisLabel.setAttribute('x', savedAsis.cx);  asisLabel.setAttribute('y', savedAsis.cy + 22);
+    tobeCirc.setAttribute('cx', savedTobe.cx); tobeCirc.setAttribute('cy', savedTobe.cy);
+    tobeLabel.setAttribute('x', savedTobe.cx);  tobeLabel.setAttribute('y', savedTobe.cy - 16);
+    moveRipples(savedTobe.cx, savedTobe.cy);
+    updateArrow();
+  };
+
+  window.applyPositions = function() {
+    savedAsis.cx = parseFloat(asisCirc.getAttribute('cx'));
+    savedAsis.cy = parseFloat(asisCirc.getAttribute('cy'));
+    savedTobe.cx = parseFloat(tobeCirc.getAttribute('cx'));
+    savedTobe.cy = parseFloat(tobeCirc.getAttribute('cy'));
+    moveRipples(savedTobe.cx, savedTobe.cy);
+    var btn = document.getElementById('apply-btn');
+    btn.textContent = '적용됨 ✓';
+    btn.style.color = '#1A7A5E';
+    btn.style.borderColor = '#1A7A5E';
+    setTimeout(function() {
+      btn.textContent = '적용';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 1500);
+  };
+
+  [asisCirc, tobeCirc].forEach(function(el){ el.style.cursor = 'grab'; });
+})();
+
+window.toggleCard = function(el) {
+  var detail = el.querySelector('.card-detail');
+  var arrow = el.querySelector('.card-arrow');
+  var isOpen = el.dataset.open === 'true';
+  el.dataset.open = !isOpen;
+  detail.style.maxHeight = isOpen ? '0' : '600px';
+  arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+};
+</script>
+</body>
+</html>
